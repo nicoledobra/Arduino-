@@ -1,0 +1,33 @@
+  int LED = 13; // Pin digital para el LED
+  char entrada; // Variable para guardar el valor del carácter enviado
+   
+  void setup()
+  {
+    pinMode(LED, OUTPUT); // Pin digital del LED como salida.
+    Serial.begin(9600); // Velocidad de comunicación en baudios.
+  }
+   
+  void loop()
+  {
+    if (Serial.available() > 0) // Si se recibe un carácter...
+    {
+      entrada = Serial.read(); // Guardamos el valor del carácter en la variable entrada.
+   
+      if ((entrada=='E')||(entrada=='e')) // Si el carácter recibido es "E" o "e"
+      {      
+        digitalWrite(LED, HIGH); // Se enciende el LED
+        Serial.print("Se ha enviado una "); // Mostramos valores a través del monitor serie
+        Serial.write(entrada);
+        Serial.print(" --> LED ENCENDIDO!!!");
+        Serial.print("\n");
+      }
+      else if ((entrada=='A')||(entrada=='a')) // Si el carácter recibido es "A" o "a"    
+      {
+        digitalWrite(LED, LOW); // Se apaga el LED
+        Serial.print("Se ha enviado una "); // Mostramos valores a través del monitor serie
+        Serial.write(entrada);
+        Serial.print(" --> LED APAGADO!!!");
+        Serial.print("\n");
+      }
+    }
+  }
