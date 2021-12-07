@@ -1,0 +1,7 @@
+char exercice[7] = {'a', 's', '4', '5', 'm', 'e', 'u'};                                                 
+for (int i = 0; i < 7; i=i+1){                                                         
+    Serial.print(exercice[i]);
+}                                                           
+Serial.println();
+
+R. as45meu + salta linia            
